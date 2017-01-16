@@ -591,6 +591,230 @@
 
     
 
+    <h4 class="name" id="getProof"><span class="type-signature"></span>getProof<span class="signature">(vault, purpose, derive, proofType)</span><span class="type-signature"> &rarr; {Promise}</span></h4>
+
+    
+
+
+
+<div class="description">
+    Retrieves an attestation by vault that a particular public key or extended public key
+originates from a particular vault-guaranteed origin. If you share a pubex with untrusted parties, make sure to use
+hardened keys
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>vault</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">vault</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">the Vault module</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>purpose</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">the particular purpose, if normal, use 'auto'</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>derive</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">the particular BIP32 derivation, see https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>proofType</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">either 'pub' or 'pubex'</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="secp256k1.js.html">secp256k1.js</a>, <a href="secp256k1.js.html#line139">line 139</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    a promise that resolves to a dictionary of signature, recovery, message (hex format of the JSON attestation containing type/origin and the pub(ex)key itself)
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Promise</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
     <h4 class="name" id="keyInfo"><span class="type-signature"></span>keyInfo<span class="signature">(vault, purpose, derive)</span><span class="type-signature"> &rarr; {Promise}</span></h4>
 
     
@@ -790,7 +1014,7 @@
 
     
 
-    <h4 class="name" id="recover"><span class="type-signature"></span>recover<span class="signature">(vault, purpose, recovery, hash)</span><span class="type-signature"> &rarr; {Promise}</span></h4>
+    <h4 class="name" id="recover"><span class="type-signature"></span>recover<span class="signature">(vault, signature, recovery, hash)</span><span class="type-signature"> &rarr; {Promise}</span></h4>
 
     
 
@@ -856,7 +1080,7 @@
 
         <tr>
             
-                <td class="name"><code>purpose</code></td>
+                <td class="name"><code>signature</code></td>
             
 
             <td class="type">
@@ -1429,6 +1653,228 @@
 
 
         
+            
+
+    
+
+    <h4 class="name" id="verifyProof"><span class="type-signature"></span>verifyProof<span class="signature">(recovery, vault, signature, the)</span><span class="type-signature"> &rarr; {Promise}</span></h4>
+
+    
+
+
+
+<div class="description">
+    Verifies an attestation was done by vault, that this message was signed by vault
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>recovery</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">the recovery part of the signature</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>vault</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">vault</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">the Vault module</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>signature</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">the hex form signature</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>the</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">message in hex form</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="secp256k1.js.html">secp256k1.js</a>, <a href="secp256k1.js.html#line157">line 157</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    a promise that resolves to a boolean value if this attestation is valid
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Promise</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
     
 
     
@@ -1444,13 +1890,13 @@
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#decrypt">decrypt</a></li><li><a href="global.html#encrypt">encrypt</a></li><li><a href="global.html#keyInfo">keyInfo</a></li><li><a href="global.html#recover">recover</a></li><li><a href="global.html#setupPurpose">setupPurpose</a></li><li><a href="global.html#sign">sign</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#decrypt">decrypt</a></li><li><a href="global.html#encrypt">encrypt</a></li><li><a href="global.html#getProof">getProof</a></li><li><a href="global.html#keyInfo">keyInfo</a></li><li><a href="global.html#recover">recover</a></li><li><a href="global.html#setupPurpose">setupPurpose</a></li><li><a href="global.html#sign">sign</a></li><li><a href="global.html#verifyProof">verifyProof</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a> on Wed Jan 04 2017 11:37:36 GMT+0100 (CET)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a> on Mon Jan 16 2017 08:25:46 GMT+0100 (CET)
 </footer>
 
 <script> prettyPrint(); </script>
